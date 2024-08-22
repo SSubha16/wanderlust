@@ -1,6 +1,6 @@
 const Listing = require("../models/listing");
 
-
+const axios=require("axios");
 
 module.exports.index = async (req, res) => {
     const allListings =  await Listing.find({});
@@ -32,9 +32,43 @@ module.exports.showListing = async (req, res) => {
 module.exports.createListing = async ( req , res) => {
     let url = req.file.path ;
     let filename = req.file.filename;
-    const newListing = new Listing(req.body.listing);   
+    let {listing}=req.body;
+
+    let response;
+    try {
+        response = await axios.get('https://nominatim.openstreetmap.org/search', {
+            params: {
+                q: listing.location,  // Location from user input
+                format: 'json',
+                limit: 1
+            }
+        });
+    } catch (error) {
+        console.error('Error during geocoding:', error);
+        req.flash('error', 'Failed to geocode the location.');
+        return res.redirect('/listings/new');
+    }
+    
+    if (!response.data.length) {
+        req.flash('error', 'No geocoding results found.');
+        return res.redirect('/listings/new');
+    }
+
+    const geoData = response.data[0];
+    const coordinates = [parseFloat(geoData.lon), parseFloat(geoData.lat)];
+
+
+
+    const newListing = new Listing(req.body.listing);
+    if(url){
+        newListing.image.url=url;
+        newListing.image.filename=filename;
+    }   
     newListing.owner = req.user._id;
-    newListing.image = { url , filename };
+    newListing.geometry = {
+        type: 'Point',
+        coordinates: coordinates
+    };
     await newListing.save();
     req.flash("success" , "New Listing created !!");
     res.redirect("/listings");  
@@ -57,7 +91,31 @@ module.exports.renderEditform = async (req ,res) =>{
 module.exports.updateListing = async (req, res) => {
     let { id } = req.params;  
     let { title, description, imgURL, price, country, location } = req.body.listing;
+    let {listing}= req.body;
     console.log(req.body);
+
+    let response;
+    try {
+        response = await axios.get('https://nominatim.openstreetmap.org/search', {
+            params: {
+                q: listing.location,  // Location from user input
+                format: 'json',
+                limit: 1
+            }
+        });
+    } catch (error) {
+        console.error('Error during geocoding:', error);
+        req.flash('error', 'Failed to geocode the location.');
+        return res.redirect('/listings/new');
+    }
+    
+    if (!response.data.length) {
+        req.flash('error', 'No geocoding results found.');
+        return res.redirect('/listings/new');
+    }
+
+    const geoData = response.data[0];
+    const coordinates = [parseFloat(geoData.lon), parseFloat(geoData.lat)];
  
     try {
         let listing = await Listing.findByIdAndUpdate(
@@ -69,7 +127,11 @@ module.exports.updateListing = async (req, res) => {
                     "image.url": imgURL, 
                     price: price,
                     country: country,
-                    location: location
+                    location: location,
+                    geometry: {
+                        type: 'Point',
+                        coordinates: coordinates,
+                    }
                 }
             },
             { new: true } // Optionally return the updated document
