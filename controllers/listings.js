@@ -54,9 +54,10 @@ module.exports.renderEditform = async (req ,res) =>{
   }
 };
 
- module.exports.updateListing = async (req, res) => {
+module.exports.updateListing = async (req, res) => {
     let { id } = req.params;  
-    let { title, description, imgURL, price, country, location } = req.body;
+    let { title, description, imgURL, price, country, location } = req.body.listing;
+    console.log(req.body);
  
     try {
         let listing = await Listing.findByIdAndUpdate(
@@ -89,7 +90,6 @@ module.exports.renderEditform = async (req ,res) =>{
     }
    
 };
-
  module.exports.deleteListing = async (req,res) => {
     let { id } = req.params;
     let deletedListing = await Listing.findByIdAndDelete(id);

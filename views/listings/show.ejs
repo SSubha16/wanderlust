@@ -35,10 +35,11 @@
     
           
           <div  class="col-8  offset-3 mb-3">
-             <hr/>
+            
              <% if (currUser) { %>
-           <h4>Leave a Review</h4>
-           <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate class="needs-validation">
+               <hr/>
+             <h4>Leave a Review</h4>
+             <form action="/listings/<%= listing._id %>/reviews" method="post" novalidate class="needs-validation">
                   <div class="mb-3 mt-3">
                      <label for="rating" class="form-label">Rating : </label>
                      <fieldset class="starability-slot">
@@ -63,14 +64,15 @@
                       </div>
                   </div>
                   <button class="btn btn-outline-dark">Submit</button>
-           </form>
-           <hr/>
-           <% } %>
+             </form>
+             <hr/>
+            <% } %>
           
 
 
-           <p><b>All Reviews</b></p>
+          <% if(listing.reviews.length > 0 ) { %> 
            <div class="row">
+            <p><b>All Reviews</b></p>
 
            <% for( review of listing.reviews ) { %>
                  <div class="card col-5 ms-3 mb-3">
@@ -89,6 +91,7 @@
                  </div>
            <% } %>
           </div>
+          <% } %>
 
      </div>
     
