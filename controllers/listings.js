@@ -41,6 +41,10 @@ module.exports.createListing = async ( req , res) => {
                 q: listing.location,  // Location from user input
                 format: 'json',
                 limit: 1
+            },
+            headers: {
+                'User-Agent': 'wanderlust-project/1.0 (ssubha3333@gmail.com)',
+                'Referer': 'https://wanderlust-project-j8ng.onrender.com/'
             }
         });
     } catch (error) {
@@ -101,7 +105,11 @@ module.exports.updateListing = async (req, res) => {
                 q: listing.location,  // Location from user input
                 format: 'json',
                 limit: 1
-            }
+            },
+            headers: {
+                'User-Agent': 'wanderlust-project/1.0 (ssubha3333@gmail.com)',
+                'Referer': 'https://wanderlust-project-j8ng.onrender.com/'
+            },
         });
     } catch (error) {
         console.error('Error during geocoding:', error);
