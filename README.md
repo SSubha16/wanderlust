@@ -1,50 +1,56 @@
-Wanderlust
+<h1 align="center">Wanderlust 🌍✈️</h1>
 
-https://github.com/SSubha16/wanderlust
+<div align="center">
+  <p>A comprehensive full-stack web application designed for travel enthusiasts to explore new destinations, cultures, and share their experiences.</p>
+  
+  <!-- This badge links directly to your LinkedIn video demo since screenshots are unavailable -->
+  <a href="https://lnkd.in/p/d9hSzCMf">
+    <img src="https://img.shields.io/badge/🎥_Watch_Project_Demo-LinkedIn-0077B5?style=for-the-badge&logo=linkedin" alt="Watch Demo on LinkedIn">
+  </a>
+</div>
 
-Project Description:
+<br>
 
-Wanderlust is a web application designed for travel enthusiasts to explore new destinations, cultures, and experiences. Built using Node.js, Express.js, and MongoDB, this application allows users to discover and share their travel experiences.
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-339933?style=flat-square&logo=nodedotjs&logoColor=white" alt="Node.js" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=flat-square&logo=express&logoColor=white" alt="Express.js" />
+  <img src="https://img.shields.io/badge/MongoDB-4EA94B?style=flat-square&logo=mongodb&logoColor=white" alt="MongoDB" />
+  <img src="https://img.shields.io/badge/Bootstrap-563D7C?style=flat-square&logo=bootstrap&logoColor=white" alt="Bootstrap" />
+</p>
 
-Features:
+## 📖 About The Project
 
-User authentication and authorization using Passport.js
-Image upload and storage using Multer and Cloudinary
-Interactive maps using TomTom API
-Responsive design using Bootstrap
-Error handling for a seamless user experience
-Tech Stack:
+Wanderlust is a robust platform that allows users to discover and share their travel experiences. Built with the MERN-like stack (using native HTML/CSS/JS for the frontend), it provides a seamless user experience for exploring global accommodations and destinations.
 
-Backend:
-Node.js (runtime environment)
-Express.js (web framework)
-MongoDB (database)
-Multer (image upload middleware)
-Passport.js (authentication framework)
-Frontend:
-Bootstrap (CSS framework for responsive design)
-Image Storage:
-Cloudinary (cloud-based image storage and management)
-Maps:
-TomTom (API for interactive maps)
-Error Handling:
-Custom error handling for a seamless user experience
-Other Libraries and Tools:
-Various other libraries and tools to enhance the application's functionality and performance
-Installation:
+## ✨ Key Features
 
+- **User Authentication:** Secure registration, login, and authorization utilizing `Passport.js`.
+- **Media Management:** Seamless image uploading and cloud-based storage using `Multer` and `Cloudinary`.
+- **Interactive Maps:** Dynamic location tagging and visual discovery powered by the `OpenStreetMap` API.
+- **Responsive UI:** Mobile-friendly, clean interface designed with `Bootstrap`.
+- **Robust Error Handling:** Custom error management ensuring a smooth, crash-resistant user experience.
 
-Install dependencies: npm install
-Start the server: npm start
-Usage:
+## 💻 Tech Stack
 
-Register or login to start exploring destinations
-Upload images and share your travel experiences
-Use interactive maps to discover new places
-Enjoy a seamless user experience with robust error handling
-Contributing:
+**Backend & Database:**
+- Node.js (Runtime Environment)
+- Express.js (Web Framework)
+- MongoDB (Database)
+- Passport.js (Authentication)
 
-Contributions are welcome! Please fork the repository, make changes, and submit a pull request.
+**Frontend:**
+- HTML5, CSS3, JavaScript
+- Bootstrap (CSS Framework)
 
+**External Services & APIs:**
+- Cloudinary (Cloud-based image storage)
+- OpenStreetMap (Interactive maps API)
 
+## 🚀 Installation & Usage
 
+To run this project locally, follow these steps:
+
+1. **Clone the repository:**
+   ```bash
+   git clone [https://github.com/SSubha16/wanderlust.git](https://github.com/SSubha16/wanderlust.git)
+   cd wanderlust
